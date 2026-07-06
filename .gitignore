@@ -1,0 +1,7 @@
+# Mac junk
+.DS_Store
+.fuse_hidden*
+
+# Screenshots / working files (not part of the live site)
+Screenshot*.png
+*.fuse_hidden*

@@ -1,0 +1,21 @@
+// ============================================================
+// SAMPLE LISTING DATA (demo mode)
+// When the IDX/MLS API is ready, flip LISTINGS_CONFIG.mode to
+// "api" in js/search.js and these are ignored.
+// Photos: gradient placeholders until real photos/API arrive.
+// ============================================================
+
+const SAMPLE_LISTINGS = [
+  { id: "L001", office: "Other Brokerage", price: 889000,  address: "64 Spotted Dolphin Road", city: "Santa Rosa Beach", zip: "32459", beds: 3, baths: 2, sqft: 1764, lat: 30.3607, lng: -86.2286, status: "Active", tag: "Open House",  ph: "ph-1", blurb: "Coastal cottage tucked south of 30A, minutes to the sand." },
+  { id: "L002", office: "Jessica Mackrael · Coldwell Banker Realty", price: 744682,  address: "1712 Union Avenue",       city: "Niceville",        zip: "32578", beds: 3, baths: 3, sqft: 1984, lat: 30.5316, lng: -86.4703, status: "Active", tag: "New Today",   ph: "ph-2", blurb: "New-build farmhouse with wraparound porch near Turkey Creek." },
+  { id: "L003", office: "Jessica Mackrael · Coldwell Banker Realty", price: 1250000, address: "212 Harbor Boulevard",    city: "Destin",           zip: "32541", beds: 4, baths: 3, sqft: 2650, lat: 30.3935, lng: -86.4958, status: "Active", tag: "Waterfront",  ph: "ph-3", blurb: "Harbor-view retreat steps from the boardwalk and marina." },
+  { id: "L004", office: "Other Brokerage", price: 525000,  address: "428 Live Oak Lane",       city: "Crestview",        zip: "32536", beds: 5, baths: 3, sqft: 2870, lat: 30.7621, lng: -86.5705, status: "Active", tag: "Price Drop",  ph: "ph-4", blurb: "Room for everyone — five bedrooms on a shaded half-acre." },
+  { id: "L005", office: "Jessica Mackrael · Coldwell Banker Realty", price: 2150000, address: "89 Gulfside Way",         city: "Miramar Beach",    zip: "32550", beds: 5, baths: 4, sqft: 3420, lat: 30.3743, lng: -86.3585, status: "Active", tag: "Gulf Front",  ph: "ph-5", blurb: "Gulf-front luxury along Scenic Gulf Drive with private beach walkover." },
+  { id: "L006", office: "Jessica Mackrael · Coldwell Banker Realty", price: 415000,  address: "77 Bayshore Drive",       city: "Niceville",        zip: "32578", beds: 3, baths: 2, sqft: 1610, lat: 30.5122, lng: -86.4441, status: "Active", tag: "",            ph: "ph-6", blurb: "Bluewater Bay charmer near the marina and golf." },
+  { id: "L007", office: "Other Brokerage", price: 679000,  address: "1420 Sound Haven Court",  city: "Navarre",          zip: "32566", beds: 4, baths: 3, sqft: 2380, lat: 30.3965, lng: -86.8636, status: "Active", tag: "Sound View",  ph: "ph-1", blurb: "Quiet sound-side living with sunset water views." },
+  { id: "L008", office: "Other Brokerage", price: 349900,  address: "310 Marlberry Trace",     city: "Freeport",         zip: "32439", beds: 3, baths: 2, sqft: 1540, lat: 30.4983, lng: -86.1360, status: "Active", tag: "New Build",   ph: "ph-2", blurb: "Brand-new construction in fast-growing Hammock Bay area." },
+  { id: "L009", office: "Jessica Mackrael · Coldwell Banker Realty", price: 1875000, address: "45 Sea Turtle Court",     city: "Santa Rosa Beach", zip: "32459", beds: 4, baths: 4, sqft: 2980, lat: 30.3488, lng: -86.1740, status: "Active", tag: "30A",         ph: "ph-1", blurb: "Architect-designed beach house near the dune lakes of 30A." },
+  { id: "L010", office: "Other Brokerage", price: 465000,  address: "228 Ferry Road NE",       city: "Fort Walton Beach",zip: "32548", beds: 4, baths: 2, sqft: 2050, lat: 30.4245, lng: -86.6003, status: "Active", tag: "",            ph: "ph-4", blurb: "Updated brick ranch minutes from Hurlburt Field and downtown." },
+  { id: "L011", office: "Other Brokerage", price: 985000,  address: "1804 Rue de la Mer",      city: "Destin",           zip: "32541", beds: 3, baths: 3, sqft: 2210, lat: 30.3819, lng: -86.4222, status: "Active", tag: "Pool",        ph: "ph-5", blurb: "Mediterranean-style villa with private pool in gated enclave." },
+  { id: "L012", office: "Jessica Mackrael · Coldwell Banker Realty", price: 599000,  address: "96 Cedar Bend Way",       city: "Niceville",        zip: "32578", beds: 4, baths: 3, sqft: 2440, lat: 30.5471, lng: -86.4839, status: "Active", tag: "A-Schools",   ph: "ph-4", blurb: "Family home in Niceville's most requested school zone." }
+];

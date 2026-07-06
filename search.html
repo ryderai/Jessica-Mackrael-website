@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search Homes for Sale | Emerald Coast — Jessica Mackrael, Realtor</title>
+<meta name="description" content="Search homes for sale across Florida's Emerald Coast — Niceville, Destin, Miramar Beach, Santa Rosa Beach, 30A and beyond — with an interactive map. Presented by Jessica Mackrael, Coldwell Banker Realty. 850.687.9888.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+</head>
+<body class="search-page">
+
+<header class="site-header">
+  <a class="brand brand-lockup" href="index.html"><span class="brand-name">Jessica Mackrael</span><span class="brand-cb"><img class="cb-mark" src="assets/cb-mark-light.png" alt="" aria-hidden="true"><span class="brand-cb-text">Coldwell Banker<br>Realty</span></span></a>
+  <button class="nav-toggle" aria-label="Menu">☰</button>
+  <nav class="nav">
+    <a href="search.html" class="active">Search</a>
+    <a href="sell.html">Sell</a>
+    <a href="communities.html">Communities</a>
+    <a href="properties.html">My Properties</a>
+    <a href="about.html">About</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="search-intro">
+  <div class="wrap center">
+    <span class="eyebrow">Find Your Home</span>
+    <h1 class="headline">Search the Emerald Coast.</h1>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="search-filters">
+  <div class="wrap filter-row">
+    <div class="filter-q"><label for="f-q">Keyword</label>
+      <input type="text" id="f-q" placeholder="Address, city, or ZIP&hellip;">
+    </div>
+    <div><label for="f-city">Area</label>
+      <select id="f-city"><option value="all">All Areas</option></select>
+    </div>
+    <div><label for="f-min">Min Price</label>
+      <select id="f-min">
+        <option value="0">No Min</option>
+        <option value="300000">$300k</option>
+        <option value="500000">$500k</option>
+        <option value="750000">$750k</option>
+        <option value="1000000">$1M</option>
+        <option value="1500000">$1.5M</option>
+      </select>
+    </div>
+    <div><label for="f-max">Max Price</label>
+      <select id="f-max">
+        <option value="0">No Max</option>
+        <option value="500000">$500k</option>
+        <option value="750000">$750k</option>
+        <option value="1000000">$1M</option>
+        <option value="1500000">$1.5M</option>
+        <option value="3000000">$3M</option>
+      </select>
+    </div>
+    <div><label for="f-beds">Beds</label>
+      <select id="f-beds">
+        <option value="0">Any</option><option value="2">2+</option>
+        <option value="3">3+</option><option value="4">4+</option><option value="5">5+</option>
+      </select>
+    </div>
+    <div><label for="f-baths">Baths</label>
+      <select id="f-baths">
+        <option value="0">Any</option><option value="2">2+</option>
+        <option value="3">3+</option><option value="4">4+</option>
+      </select>
+    </div>
+    <div><label for="f-sort">Sort</label>
+      <select id="f-sort">
+        <option value="newest">Newest</option>
+        <option value="price-desc">Price: High to Low</option>
+        <option value="price-asc">Price: Low to High</option>
+      </select>
+    </div>
+    <div style="display:flex; align-items:flex-end; padding-bottom:2px;">
+      <button class="save-search-btn" id="save-search-btn" onclick="openSaveSearch()" aria-label="Save this search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+        <span id="ss-btn-label">Save Search</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- SAVE SEARCH MODAL -->
+<div class="ss-modal-backdrop" id="ss-modal-backdrop" role="dialog" aria-modal="true" aria-label="Save your search">
+  <div class="ss-modal">
+    <button class="ss-modal-close" onclick="closeSaveSearch()" aria-label="Close">×</button>
+
+    <div id="ss-form-wrap">
+      <span class="eyebrow" style="color:var(--gold);">Email Alerts</span>
+      <h3>Save this search.</h3>
+      <p>Enter your email and we'll notify you when new homes matching your filters become available.</p>
+      <form id="ss-form" novalidate>
+        <div style="margin-bottom:22px;">
+          <label for="ss-name">Your Name</label>
+          <input id="ss-name" type="text" placeholder="First name" required>
+        </div>
+        <div style="margin-bottom:32px;">
+          <label for="ss-email">Email Address</label>
+          <input id="ss-email" type="email" placeholder="you@example.com" required>
+        </div>
+        <div class="btn-row" style="margin-top:0; gap:14px;">
+          <button class="btn btn-solid" type="submit">Set Up Alerts</button>
+          <button class="btn" type="button" onclick="closeSaveSearch()">Cancel</button>
+        </div>
+        <p id="ss-form-note" style="display:none; margin-top:16px; font-size:14px; color:var(--gold);"></p>
+      </form>
+    </div>
+
+    <div class="ss-success" id="ss-success">
+      <span class="ss-success-icon">✓</span>
+      <h3>You're set up!</h3>
+      <p style="margin-top:10px; color:var(--charcoal-soft);">Jessica will reach out when new listings match your search. You can also reach her directly at any time.</p>
+      <div class="btn-row" style="justify-content:center; margin-top:28px;">
+        <a class="btn btn-solid" href="tel:+18506879888">Call 850.687.9888</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LISTING DETAIL OVERLAY — shown when hash is #listing-XXX -->
+<div id="listing-overlay" style="display:none;"></div>
+
+<!-- MAP + RESULTS -->
+<main class="search-layout">
+  <div id="map" aria-label="Map of homes for sale"></div>
+  <aside class="results-pane">
+    <div class="results-head">
+      <span id="result-count" class="eyebrow" style="margin:0;">— homes</span>
+    </div>
+    <div id="results" class="results-grid"></div>
+    <p class="demo-note">Demo listings shown for design preview — live MLS data connects here once IDX access is approved. For current listings today, call or text Jessica at <a href="tel:+18506879888">850.687.9888</a>.</p>
+  </aside>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <img class="jm-logo-footer" src="assets/jm-logo-light.png" alt="Jessica Mackrael">
+        <div class="cb-lockup cb-lockup-light"><img class="cb-mark" src="assets/cb-mark-light.png" alt="" aria-hidden="true"><span>Coldwell Banker<br>Realty</span></div>
+        <p>Realtor® · Top 1% of Coldwell Banker agents worldwide<br>International President's Circle · MRP</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="search.html">Search Homes</a></li>
+          <li><a href="about.html">About Jessica</a></li>
+          <li><a href="communities.html">Communities</a></li>
+          <li><a href="buy.html">Buying</a></li>
+          <li><a href="sell.html">Selling</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="military-relocation.html">Military Relocation</a></li>
+          <li><a href="faq.html">Questions &amp; Answers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+18506879888">850.687.9888 mobile</a></li>
+          <li><a href="tel:+18508974563">850.897.4563 office</a></li>
+          <li>4504 E Highway 20 Ste A<br>Niceville, FL 32578</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <ul>
+          <li><a href="https://www.facebook.com/jmackrael.realestate/" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/realestate_with_jess/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/in/jessicamackrael/" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      Jessica Mackrael, Realtor® — affiliated with Coldwell Banker Realty, Niceville, Florida. Each office is independently owned and operated. Equal Housing Opportunity. Listing information deemed reliable but not guaranteed.
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/listings-data.js"></script>
+<script src="js/search.js"></script>
+<script src="js/listing.js"></script>
+<script src="js/main.js"></script>
+<script src="js/save-search.js"></script>
+</body>
+</html>

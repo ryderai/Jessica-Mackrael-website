@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mortgage Calculator | Jessica Mackrael — Emerald Coast Real Estate</title>
+<meta name="description" content="Estimate your monthly payment, total interest, and affordability on Emerald Coast homes. Includes a VA loan calculator for military buyers — no down payment required.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand brand-lockup" href="index.html"><span class="brand-name">Jessica Mackrael</span><span class="brand-cb"><img class="cb-mark" src="assets/cb-mark-light.png" alt="" aria-hidden="true"><span class="brand-cb-text">Coldwell Banker<br>Realty</span></span></a>
+  <button class="nav-toggle" aria-label="Menu">☰</button>
+  <nav class="nav">
+    <a href="search.html">Search</a>
+    <a href="sell.html">Sell</a>
+    <a href="communities.html">Communities</a>
+    <a href="properties.html">My Properties</a>
+    <a href="about.html">About</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero hero-page">
+  <div class="wrap hero-inner">
+    <span class="eyebrow reveal">Mortgage Calculator</span>
+    <h1 class="display reveal">Know your<br>numbers.</h1>
+    <p class="reveal">Estimate your monthly payment, total cost, and how much home you can afford — including a dedicated VA loan calculator for military buyers.</p>
+  </div>
+</section>
+
+<!-- CALCULATOR BODY -->
+<section class="section">
+  <div class="wrap mort-wrap">
+
+    <!-- Tabs -->
+    <div class="mort-tabs">
+      <button class="mort-tab active" id="tab-conv" onclick="switchTab('conv')">Conventional / FHA</button>
+      <button class="mort-tab" id="tab-va" onclick="switchTab('va')">VA Loan</button>
+    </div>
+
+    <!-- CONVENTIONAL PANEL -->
+    <div class="mort-panel active" id="panel-conv">
+      <div class="mort-layout">
+        <!-- Inputs -->
+        <div class="mort-inputs">
+          <div class="form-group">
+            <label for="m-price">Home Price</label>
+            <input id="m-price" type="number" value="500000" min="50000" max="5000000" step="5000">
+          </div>
+
+          <div class="form-group">
+            <label for="m-dp-pct">Down Payment</label>
+            <div style="display:flex; gap:20px; align-items:center; margin-top:6px;">
+              <div style="flex:1;">
+                <input id="m-dp-pct" type="number" value="20" min="0" max="100" step="0.5" style="font-size:24px; font-family:var(--serif); border:0; border-bottom:1px solid var(--hairline); padding:4px 0; width:80px; background:transparent; color:var(--charcoal);" oninput="
+                  const v=parseFloat(this.value)||0;
+                  const price=parseFloat(document.getElementById('m-price').value)||0;
+                  document.getElementById('m-dp-dollar').textContent='= $'+Math.round(price*v/100).toLocaleString();
+                  calcMortgage();
+                ">
+                <span style="font-size:22px; color:var(--charcoal-soft); margin-left:4px;">%</span>
+              </div>
+              <div id="m-dp-dollar" style="font-family:var(--serif); font-size:19px; color:var(--charcoal-soft); min-width:130px;">= $100,000</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="m-rate">Interest Rate (%)</label>
+            <input id="m-rate" type="number" value="6.85" min="1" max="15" step="0.05">
+          </div>
+
+          <div class="form-group">
+            <label for="m-term">Loan Term</label>
+            <select id="m-term">
+              <option value="30" selected>30 Years (Fixed)</option>
+              <option value="20">20 Years (Fixed)</option>
+              <option value="15">15 Years (Fixed)</option>
+              <option value="10">10 Years (Fixed)</option>
+            </select>
+          </div>
+
+          <!-- Info panel -->
+          <div style="margin-top:10px; padding:24px; background:var(--cream-deep); border:1px solid var(--hairline);">
+            <p style="font-size:13px; color:var(--charcoal-soft); line-height:1.8;">
+              <strong style="color:var(--charcoal); font-weight:400;">Estimates include:</strong><br>
+              Principal &amp; interest · Property taxes (~1.1%) · Homeowner's insurance (~0.9% — Florida coastal rate) · PMI if down payment &lt; 20%
+            </p>
+          </div>
+        </div>
+
+        <!-- Result card -->
+        <div>
+          <div class="mort-result-card">
+            <div class="mort-monthly" id="m-result-monthly">$—</div>
+            <span class="mort-monthly-label">Estimated Monthly Payment</span>
+
+            <div class="mort-row">
+              <span class="mort-row-label">Principal &amp; Interest</span>
+              <span class="mort-row-val" id="m-pi">$—</span>
+            </div>
+            <div class="mort-row">
+              <span class="mort-row-label">Property Tax (est.)</span>
+              <span class="mort-row-val" id="m-tax">$—</span>
+            </div>
+            <div class="mort-row">
+              <span class="mort-row-label">Homeowners Insurance</span>
+              <span class="mort-row-val" id="m-ins">$—</span>
+            </div>
+            <div class="mort-row" id="m-pmi-row">
+              <span class="mort-row-label">PMI <span style="font-size:11px; letter-spacing:0.1em;">(if &lt;20% down)</span></span>
+              <span class="mort-row-val" id="m-pmi">$—</span>
+            </div>
+
+            <hr class="hairline" style="margin:20px 0;">
+
+            <div class="mort-row" style="padding:10px 0;">
+              <span class="mort-row-label" style="font-size:13px;">Loan Amount</span>
+              <span class="mort-row-val" style="font-size:15px;" id="m-loan">$—</span>
+            </div>
+            <div class="mort-row" style="padding:10px 0;">
+              <span class="mort-row-label" style="font-size:13px;">Total Interest Paid</span>
+              <span class="mort-row-val" style="font-size:15px;" id="m-int">$—</span>
+            </div>
+            <div class="mort-total-row">
+              <span class="mort-total-label">Total Cost</span>
+              <span class="mort-total-val" id="m-total">$—</span>
+            </div>
+
+            <div class="btn-row" style="margin-top:28px; flex-direction:column; gap:12px;">
+              <a class="btn btn-solid" href="search.html" style="text-align:center;">Browse Homes</a>
+              <a class="btn" href="contact.html" style="text-align:center;">Ask Jessica a Question</a>
+            </div>
+
+            <p class="mort-disclaimer">This calculator is for educational purposes only. Results are estimates and do not constitute a loan commitment. Actual payments will vary based on lender terms, credit score, HOA fees, and current market rates. Consult a licensed mortgage professional for pre-approval.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VA LOAN PANEL -->
+    <div class="mort-panel" id="panel-va">
+      <div style="background:linear-gradient(135deg,rgba(46,52,59,0.05),rgba(179,152,95,0.08)); border:1px solid var(--hairline); padding:20px 26px; margin-bottom:44px; display:flex; gap:16px; align-items:flex-start;">
+        <span style="font-size:22px;">🎖️</span>
+        <div>
+          <strong style="font-size:14px; letter-spacing:0.1em; text-transform:uppercase; color:var(--charcoal);">VA Loan Benefit</strong>
+          <p style="font-size:14px; color:var(--charcoal-soft); margin-top:5px; line-height:1.7;">VA loans require <strong>$0 down payment</strong>, no PMI, and typically offer competitive rates. A VA Funding Fee is required (usually 2.15% for first use, 3.3% subsequent — can be rolled into the loan). Jessica holds the MRP designation and works with VA-approved lenders regularly.</p>
+        </div>
+      </div>
+
+      <div class="mort-layout">
+        <!-- Inputs -->
+        <div class="mort-inputs">
+          <div class="form-group">
+            <label for="va-price">Home Price</label>
+            <input id="va-price" type="number" value="500000" min="50000" max="5000000" step="5000">
+          </div>
+
+          <div class="form-group">
+            <label for="va-rate">Interest Rate (%)</label>
+            <input id="va-rate" type="number" value="6.50" min="1" max="15" step="0.05">
+            <p style="font-size:12px; color:var(--charcoal-soft); margin-top:8px;">VA rates are typically 0.25–0.5% lower than conventional.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="va-term">Loan Term</label>
+            <select id="va-term">
+              <option value="30" selected>30 Years (Fixed)</option>
+              <option value="15">15 Years (Fixed)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="va-ff">VA Funding Fee (%)</label>
+            <select id="va-ff">
+              <option value="2.15" selected>2.15% — First use, no disability</option>
+              <option value="1.25">1.25% — 10%+ down, first use</option>
+              <option value="3.30">3.30% — Subsequent use, no disability</option>
+              <option value="0">0% — Service-connected disability</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Result card -->
+        <div>
+          <div class="mort-result-card">
+            <div class="mort-monthly" id="va-result-monthly">$—</div>
+            <span class="mort-monthly-label">Estimated Monthly Payment</span>
+
+            <div class="mort-row">
+              <span class="mort-row-label">Principal &amp; Interest</span>
+              <span class="mort-row-val" id="va-pi">$—</span>
+            </div>
+            <div class="mort-row">
+              <span class="mort-row-label">Property Tax (est.)</span>
+              <span class="mort-row-val" id="va-tax">$—</span>
+            </div>
+            <div class="mort-row">
+              <span class="mort-row-label">Homeowners Insurance</span>
+              <span class="mort-row-val" id="va-ins">$—</span>
+            </div>
+            <div class="mort-row">
+              <span class="mort-row-label">PMI</span>
+              <span class="mort-row-val" style="color:var(--gold);">None ✓</span>
+            </div>
+
+            <hr class="hairline" style="margin:20px 0;">
+
+            <div class="mort-row" style="padding:10px 0;">
+              <span class="mort-row-label" style="font-size:13px;">Loan Amount (incl. fee)</span>
+              <span class="mort-row-val" style="font-size:15px;" id="va-loan">$—</span>
+            </div>
+            <div class="mort-row" style="padding:10px 0;">
+              <span class="mort-row-label" style="font-size:13px;">VA Funding Fee</span>
+              <span class="mort-row-val" style="font-size:15px;" id="va-ff-amt">$—</span>
+            </div>
+            <div class="mort-row" style="padding:10px 0;">
+              <span class="mort-row-label" style="font-size:13px;">Total Interest Paid</span>
+              <span class="mort-row-val" style="font-size:15px;" id="va-int">$—</span>
+            </div>
+            <div class="mort-total-row">
+              <span class="mort-total-label">Total Cost</span>
+              <span class="mort-total-val" id="va-total">$—</span>
+            </div>
+
+            <div class="btn-row" style="margin-top:28px; flex-direction:column; gap:12px;">
+              <a class="btn btn-solid" href="military-relocation.html" style="text-align:center;">Military Relocation Guide</a>
+              <a class="btn" href="military-relocation.html#bah-calculator" style="text-align:center;">BAH Calculator →</a>
+            </div>
+
+            <p class="mort-disclaimer">VA loan estimates only. Funding fee rates are subject to change per DoD policy. Does not include HOA, flood insurance, or other costs. Speak with a VA-approved lender for pre-qualification.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-tight band-dark center">
+  <div class="wrap reveal">
+    <span class="eyebrow">Ready to Run Real Numbers?</span>
+    <h2 class="headline" style="font-size:clamp(28px,3.5vw,44px);">Jessica can connect you with<br>the right lender.</h2>
+    <p class="lede" style="margin:18px auto 0;">She works with trusted local and VA-approved lenders across the Emerald Coast — and will make sure you're set up for success before the first showing.</p>
+    <div class="btn-row" style="justify-content:center; margin-top:32px;">
+      <a class="btn btn-light" href="tel:+18506879888">Call 850.687.9888</a>
+      <a class="btn btn-light" href="contact.html">Send a Message</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <img class="jm-logo-footer" src="assets/jm-logo-light.png" alt="Jessica Mackrael">
+        <div class="cb-lockup cb-lockup-light"><img class="cb-mark" src="assets/cb-mark-light.png" alt="" aria-hidden="true"><span>Coldwell Banker<br>Realty</span></div>
+        <p>Realtor® · Top 1% of Coldwell Banker agents worldwide<br>International President's Circle · MRP</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="about.html">About Jessica</a></li>
+          <li><a href="communities.html">Communities</a></li>
+          <li><a href="buy.html">Buying</a></li>
+          <li><a href="sell.html">Selling</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="military-relocation.html">Military Relocation</a></li>
+          <li><a href="quiz.html">Find My Home Quiz</a></li>
+          <li><a href="faq.html">Questions &amp; Answers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+18506879888">850.687.9888 mobile</a></li>
+          <li><a href="tel:+18508974563">850.897.4563 office</a></li>
+          <li>4504 E Highway 20 Ste A<br>Niceville, FL 32578</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <ul>
+          <li><a href="https://www.facebook.com/jmackrael.realestate/" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/realestate_with_jess/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/in/jessicamackrael/" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      Jessica Mackrael, Realtor® — affiliated with Coldwell Banker Realty, Niceville, Florida. Each office is independently owned and operated. Equal Housing Opportunity. Information deemed reliable but not guaranteed. Mortgage calculations are estimates only and do not constitute a loan commitment.
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/mortgage.js"></script>
+</body>
+</html>

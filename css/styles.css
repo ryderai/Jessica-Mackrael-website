@@ -21,7 +21,11 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100%;
+}
 
 body {
   background: var(--cream);
@@ -36,6 +40,9 @@ body {
     radial-gradient(ellipse at 20% 10%, rgba(255,255,255,0.5), transparent 55%),
     radial-gradient(ellipse at 85% 90%, rgba(214,202,176,0.25), transparent 60%);
   background-attachment: fixed;
+  overflow-x: hidden;
+  max-width: 100%;
+  touch-action: pan-y;
 }
 
 img { max-width: 100%; display: block; }
@@ -1746,6 +1753,62 @@ textarea { min-height: 120px; resize: vertical; }
 @media (max-width: 600px) { .quiz-lead-grid { grid-template-columns: 1fr; } }
 
 /* ============================================================
+   FIND MY HOME QUIZ — popup modal (js/quiz-modal.js)
+   ============================================================ */
+.qm-backdrop { z-index: 400; }
+.qm-modal {
+  max-width: 640px;
+  max-height: 88vh;
+  overflow-y: auto;
+  position: relative;
+}
+.qm-close {
+  position: absolute;
+  top: 16px; right: 16px;
+  width: 34px; height: 34px;
+  border: none;
+  background: none;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--charcoal-soft);
+  cursor: pointer;
+  font-family: var(--sans);
+}
+.qm-close:hover { color: var(--gold); }
+.qm-eyebrow { margin-bottom: 16px; }
+.qm-modal .quiz-progress { margin-bottom: 34px; }
+.qm-modal .quiz-q { font-size: clamp(22px, 3vw, 30px); margin-bottom: 30px; }
+.qm-modal .quiz-options { gap: 14px; }
+.qm-modal .quiz-opt { padding: 16px 20px; }
+.qm-modal .quiz-nav { margin-top: 34px; }
+
+.qm-email-step { margin-top: 6px; display: flex; flex-direction: column; }
+.qm-email-step label {
+  font-size: 11.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--charcoal-soft);
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--sans);
+}
+.qm-email-step input {
+  width: 100%;
+  border: 1px solid var(--hairline);
+  padding: 14px 16px;
+  font-family: var(--sans);
+  font-size: 15px;
+  background: var(--white);
+  color: var(--charcoal);
+}
+.qm-email-step input:focus { outline: none; border-color: var(--gold); }
+.qm-note { font-size: 13px; color: var(--gold); margin-top: 16px; line-height: 1.6; }
+
+@media (max-width: 600px) {
+  .qm-modal { padding: 44px 26px; }
+}
+
+/* ============================================================
    MARKET PULSE DASHBOARD
    ============================================================ */
 .market-grid {
@@ -1805,6 +1868,74 @@ textarea { min-height: 120px; resize: vertical; }
 .market-bar-bg { flex: 1; height: 4px; background: var(--cream-deep); border-radius: 2px; }
 .market-bar-fill { height: 4px; border-radius: 2px; background: var(--gold); }
 .market-note { font-size: 12px; color: var(--charcoal-soft); margin-top: 22px; letter-spacing: 0.04em; }
+
+/* ---------- Home Finder CTA box ---------- */
+.finder-cta {
+  border: 1px solid var(--hairline);
+  padding: clamp(40px, 6vw, 70px);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: center;
+}
+.finder-cta-btn { flex-shrink: 0; }
+
+@media (max-width: 680px) {
+  .finder-section { padding-top: 0; padding-bottom: 0; }
+  .finder-cta {
+    grid-template-columns: 1fr;
+    padding: 34px 26px;
+    gap: 26px;
+    text-align: center;
+    margin-top: 56px;
+    margin-bottom: 56px;
+  }
+  .finder-cta-btn { justify-self: center; width: 100%; }
+  .finder-cta-btn .btn { display: block; width: 100%; text-align: center; }
+}
+
+/* ---------- Market table: stacked cards on mobile ---------- */
+@media (max-width: 640px) {
+  .market-table { margin-top: 36px; font-size: 14px; }
+  .market-table thead { display: none; }
+  .market-table, .market-table tbody, .market-table tr, .market-table td {
+    display: block;
+    width: 100%;
+  }
+  .market-table tr {
+    border: 1px solid var(--hairline);
+    border-radius: 2px;
+    padding: 20px 22px;
+    margin-bottom: 14px;
+  }
+  .market-table tr:hover td { background: transparent; }
+  .market-table td {
+    border-bottom: none;
+    padding: 9px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .market-table td:first-child {
+    display: block;
+    padding: 0 0 12px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--hairline);
+    font-size: 19px;
+  }
+  .market-table td:not(:first-child)::before {
+    content: attr(data-label);
+    font-size: 9.5px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-family: var(--sans);
+    flex-shrink: 0;
+  }
+  .market-table .market-bar-wrap { flex: 1; justify-content: flex-end; max-width: 62%; }
+  .market-table .market-bar-bg { max-width: 90px; }
+}
 
 /* ============================================================
    MORTGAGE CALCULATOR
@@ -2040,7 +2171,7 @@ input[type="range"]::-moz-range-thumb {
 .reviews-footer a:hover { color: #fff; border-color: #fff; }
 .reviews-overall {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   gap: 16px;
   margin-bottom: 44px;
@@ -2052,7 +2183,7 @@ input[type="range"]::-moz-range-thumb {
   line-height: 1;
 }
 .reviews-overall-detail { text-align: left; }
-.reviews-overall-stars { display: flex; gap: 4px; }
-.reviews-overall-stars span { color: var(--gold); font-size: 20px; }
-.reviews-overall-count { font-size: 12px; letter-spacing: 0.14em; color: rgba(247,243,234,0.55); margin-top: 4px; }
+.reviews-overall-stars { display: flex; gap: 4px; line-height: 1; margin-top: 16px; }
+.reviews-overall-stars span { color: var(--gold); font-size: 20px; line-height: 1; }
+.reviews-overall-count { font-size: 12px; letter-spacing: 0.14em; color: rgba(247,243,234,0.55); margin-top: 4px; line-height: 1; }
 

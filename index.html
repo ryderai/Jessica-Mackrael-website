@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Jessica Mackrael | Emerald Coast Real Estate — Niceville, Destin &amp; 30A Realtor</title>
 <meta name="description" content="Jessica Mackrael is a top-producing Realtor on Florida's Emerald Coast, ranked in the top 1% of Coldwell Banker agents worldwide. Buying, selling, and military relocation in Niceville, Destin, Miramar Beach, Santa Rosa Beach, and the Florida Panhandle. Call 850.687.9888.">
 <meta name="keywords" content="Niceville realtor, Destin real estate agent, Emerald Coast homes, 30A real estate, Eglin AFB relocation, Jessica Mackrael">
@@ -251,9 +251,9 @@
       <tbody>
         <tr>
           <td>Niceville</td>
-          <td class="price-cell">$447K</td>
-          <td>$218</td>
-          <td>
+          <td class="price-cell" data-label="Median Price">$447K</td>
+          <td data-label="$/Sq Ft">$218</td>
+          <td data-label="Avg. Days on Market">
             <div class="market-bar-wrap">
               <span>38</span>
               <div class="market-bar-bg"><div class="market-bar-fill" style="width:39%"></div></div>
@@ -262,9 +262,9 @@
         </tr>
         <tr>
           <td>Destin</td>
-          <td class="price-cell">$765K</td>
-          <td>$289</td>
-          <td>
+          <td class="price-cell" data-label="Median Price">$765K</td>
+          <td data-label="$/Sq Ft">$289</td>
+          <td data-label="Avg. Days on Market">
             <div class="market-bar-wrap">
               <span>58</span>
               <div class="market-bar-bg"><div class="market-bar-fill" style="width:60%"></div></div>
@@ -273,9 +273,9 @@
         </tr>
         <tr>
           <td>Miramar Beach</td>
-          <td class="price-cell">$695K</td>
-          <td>$272</td>
-          <td>
+          <td class="price-cell" data-label="Median Price">$695K</td>
+          <td data-label="$/Sq Ft">$272</td>
+          <td data-label="Avg. Days on Market">
             <div class="market-bar-wrap">
               <span>52</span>
               <div class="market-bar-bg"><div class="market-bar-fill" style="width:54%"></div></div>
@@ -284,9 +284,9 @@
         </tr>
         <tr>
           <td>30A / Santa Rosa Beach</td>
-          <td class="price-cell">$1.1M</td>
-          <td>$418</td>
-          <td>
+          <td class="price-cell" data-label="Median Price">$1.1M</td>
+          <td data-label="$/Sq Ft">$418</td>
+          <td data-label="Avg. Days on Market">
             <div class="market-bar-wrap">
               <span>78</span>
               <div class="market-bar-bg"><div class="market-bar-fill" style="width:80%"></div></div>
@@ -295,9 +295,9 @@
         </tr>
         <tr>
           <td>Fort Walton Beach</td>
-          <td class="price-cell">$372K</td>
-          <td>$192</td>
-          <td>
+          <td class="price-cell" data-label="Median Price">$372K</td>
+          <td data-label="$/Sq Ft">$192</td>
+          <td data-label="Avg. Days on Market">
             <div class="market-bar-wrap">
               <span>44</span>
               <div class="market-bar-bg"><div class="market-bar-fill" style="width:45%"></div></div>
@@ -306,9 +306,9 @@
         </tr>
         <tr>
           <td>Navarre</td>
-          <td class="price-cell">$365K</td>
-          <td>$188</td>
-          <td>
+          <td class="price-cell" data-label="Median Price">$365K</td>
+          <td data-label="$/Sq Ft">$188</td>
+          <td data-label="Avg. Days on Market">
             <div class="market-bar-wrap">
               <span>41</span>
               <div class="market-bar-bg"><div class="market-bar-fill" style="width:42%"></div></div>
@@ -347,15 +347,15 @@
 </section>
 
 <!-- FIND MY HOME QUIZ CTA -->
-<section class="section" style="padding-top:0;">
+<section class="section finder-section">
   <div class="wrap">
-    <div style="border:1px solid var(--hairline); padding:clamp(40px,6vw,70px); display:grid; grid-template-columns:1fr auto; gap:40px; align-items:center;">
+    <div class="finder-cta">
       <div class="reveal">
         <span class="eyebrow">5-Minute Home Finder</span>
         <h2 class="headline" style="font-size:clamp(26px,3vw,40px);">Not sure where to start?<br>Let us point you in the right direction.</h2>
         <p style="margin-top:18px; font-size:16px; color:var(--charcoal-soft); line-height:1.8;">Answer five quick questions about your lifestyle, budget, and timeline — we'll match you to the Emerald Coast communities that fit.</p>
       </div>
-      <div class="reveal" style="flex-shrink:0;">
+      <div class="reveal finder-cta-btn">
         <a class="btn btn-solid" href="quiz.html">Take the Quiz →</a>
       </div>
     </div>
@@ -450,6 +450,7 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/quiz-modal.js"></script>
 <script src="js/listings-data.js"></script>
 <script src="js/hero-search-anim.js"></script>
 <script src="js/hero-search.js"></script>

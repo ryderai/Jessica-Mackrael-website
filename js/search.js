@@ -191,6 +191,32 @@ async function initSearch() {
     citySel.appendChild(o);
   });
 
+  // Arriving from the Find My Home quiz? Pre-fill the filter bar
+  // with their answers so the matching homes show immediately.
+  let quizCity = params.get("city") || "";
+  let quizMin  = params.get("min")  || "";
+  let quizMax  = params.get("max")  || "";
+  let quizBeds = params.get("beds") || "";
+  if (!quizCity && !quizMin && !quizMax && !quizBeds) {
+    try {
+      const stashed = JSON.parse(sessionStorage.getItem("quizFilters") || "null");
+      if (stashed) {
+        quizCity = stashed.city || "";
+        quizMin  = stashed.min  || "";
+        quizMax  = stashed.max  || "";
+        quizBeds = stashed.beds || "";
+      }
+    } catch (_) {}
+  }
+  try { sessionStorage.removeItem("quizFilters"); } catch (_) {}
+
+  if (quizCity && [...citySel.options].some((o) => o.value === quizCity)) {
+    citySel.value = quizCity;
+  }
+  if (quizMin) document.querySelector("#f-min").value = quizMin;
+  if (quizMax) document.querySelector("#f-max").value = quizMax;
+  if (quizBeds) document.querySelector("#f-beds").value = quizBeds;
+
   document.querySelectorAll(".search-filters select").forEach((s) =>
     s.addEventListener("change", applyFilters)
   );

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 32" width="160" height="32" aria-label="AI Syndicate">
+  <!-- Node network icon -->
+  <!-- Center node -->
+  <circle cx="14" cy="16" r="3.5" fill="#000"/>
+  <!-- Outer nodes -->
+  <circle cx="14" cy="5"  r="2" fill="#000"/>
+  <circle cx="14" cy="27" r="2" fill="#000"/>
+  <circle cx="4"  cy="10" r="2" fill="#000"/>
+  <circle cx="4"  cy="22" r="2" fill="#000"/>
+  <circle cx="24" cy="10" r="2" fill="#000"/>
+  <circle cx="24" cy="22" r="2" fill="#000"/>
+  <!-- Connector lines -->
+  <line x1="14" y1="12.5" x2="14" y2="7"   stroke="#000" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="14" y1="19.5" x2="14" y2="25"  stroke="#000" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="10.9" y1="13.7" x2="5.8" y2="11.5"  stroke="#000" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="10.9" y1="18.3" x2="5.8" y2="20.5"  stroke="#000" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="17.1" y1="13.7" x2="22.2" y2="11.5" stroke="#000" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="17.1" y1="18.3" x2="22.2" y2="20.5" stroke="#000" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- Wordmark -->
+  <text x="34" y="21" font-family="'Arial','Helvetica Neue',sans-serif" font-size="13.5" font-weight="700" letter-spacing="1.8" fill="#000">AI SYNDICATE</text>
+</svg>

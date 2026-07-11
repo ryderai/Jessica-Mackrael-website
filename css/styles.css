@@ -379,6 +379,37 @@ textarea { min-height: 120px; resize: vertical; }
   color: rgba(247,243,234,0.5);
   line-height: 1.9;
 }
+.footer-powered {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--hairline-light);
+  display: flex;
+  align-items: center;
+}
+.footer-powered a {
+  display: inline-flex;
+  align-items: center;
+  opacity: 0.55;
+  transition: opacity 0.2s ease;
+  text-decoration: none;
+}
+.footer-powered a:hover { opacity: 1; }
+.footer-powered-label {
+  font-family: 'Jost', Arial, sans-serif;
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(247,243,234,0.45);
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  white-space: nowrap;
+  margin-right: 10px;
+  user-select: none;
+}
+.footer-powered img {
+  display: block;
+  filter: invert(1) brightness(2);
+}
 
 /* ---------- map section ---------- */
 .map-band {

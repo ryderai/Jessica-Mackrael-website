@@ -15,7 +15,7 @@
 // ============================================================
 
 const QUIZ_MODAL_CONFIG = {
-  liveMode: false, // <- set true when the site goes live
+  liveMode: true, // <- site is live on jessicamackrael.com
   jessicaEmail: 'jessica.mackrael@cbrealty.com',
 };
 

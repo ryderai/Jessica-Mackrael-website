@@ -7,7 +7,7 @@
 // below. Until then the form runs in preview mode (shows a
 // confirmation but doesn't open the email app).
 // ============================================================
-const JESSICA_EMAIL = ""; // e.g. "jessica.mackrael@cbrealty.com"
+const JESSICA_EMAIL = "jessica.mackrael@cbrealty.com";
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("value-form");

@@ -17,4 +17,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://www.emeraldcoasthomeguide.com/sitemap.xml
+Sitemap: https://www.jessicamackrael.com/sitemap.xml

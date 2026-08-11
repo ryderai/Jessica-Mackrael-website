@@ -25,11 +25,17 @@
      GET /api/listings?debug=1  → counts + sample offices, no listing rows
    ============================================================ */
 
+// Vercel: allow up to 60s so the cold market pull never times out.
+export const config = { maxDuration: 60 };
+
 const SERVICE_ROOT = "https://replication.sparkapi.com/Version/3/Reso/OData";
 
 const PAGE_SIZE     = 200;
-const MAX_RECORDS   = 1000;   // safety cap; newest-modified first
-const CACHE_SECONDS = 60 * 60 * 3;   // 3h — well inside the 12h IDX floor
+const MAX_RECORDS   = 250;    // market slice: newest-modified first (kept small so
+                              //   the page loads fast and doesn't render 1000 map pins)
+const HER_NAME      = "Mackrael";   // always pull her own listings too, so My Properties
+                                    //   is never empty even if she's outside the newest 250
+const CACHE_SECONDS = 60 * 60 * 6;   // 6h fresh; stale served instantly while revalidating
 
 /* For-sale statuses only (this is a buyer-facing search site). */
 const STATUS_MAP = {
@@ -142,7 +148,7 @@ export default async function handler(req, res) {
       .map(s => `StandardStatus eq '${s}'`)
       .join(" or ");
 
-    const query =
+    const marketQuery =
       `Property?$filter=${encodeURIComponent(`(${statuses})`)}` +
       `&$orderby=ModificationTimestamp desc` +
       `&$expand=Media` +
@@ -150,14 +156,32 @@ export default async function handler(req, res) {
 
     let raw;
     try {
-      raw = await odataAll(query);
+      raw = await odataAll(marketQuery);
     } catch (err) {
       // Spark may not certify $expand — retry without it (cards fall back to gradient).
       if (/expand/i.test(err.message) || /400|501/.test(err.message)) {
-        raw = await odataAll(query.replace("&$expand=Media", ""));
+        raw = await odataAll(marketQuery.replace("&$expand=Media", ""));
       } else {
         throw err;
       }
+    }
+
+    // Always include Jessica's own listings, even if they're older than the
+    // newest 250 — otherwise the My Properties page could come up empty.
+    try {
+      const herFilter = `(${statuses}) and contains(ListAgentFullName,'${HER_NAME}')`;
+      const herQuery =
+        `Property?$filter=${encodeURIComponent(herFilter)}&$expand=Media&$top=${PAGE_SIZE}`;
+      const herRaw = await odataAll(herQuery);
+      const seen = new Set(raw.map(r => String(r.ListingId || r.ListingKey)));
+      for (const r of herRaw) {
+        const id = String(r.ListingId || r.ListingKey);
+        if (!seen.has(id)) { raw.push(r); seen.add(id); }
+      }
+    } catch (err) {
+      // contains() unsupported or query failed — no problem, her listings just
+      // rely on being within the market slice. Don't fail the whole response.
+      console.warn("[idx] agent-specific pull skipped:", err.message);
     }
 
     const listings = raw.map(normalize).filter(Boolean);

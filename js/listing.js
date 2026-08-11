@@ -184,7 +184,10 @@ function buildOverlayHTML(l) {
 let ldpMapInstance = null;
 
 function showListing(id) {
-  const listings = typeof SAMPLE_LISTINGS !== "undefined" ? SAMPLE_LISTINGS : [];
+  // Prefer the live-loaded listings (API mode) from search.js;
+  // fall back to the demo array if the feed hasn't loaded.
+  const live = (typeof allListings !== "undefined" && allListings && allListings.length) ? allListings : null;
+  const listings = live || (typeof SAMPLE_LISTINGS !== "undefined" ? SAMPLE_LISTINGS : []);
   const l = listings.find((x) => x.id === id);
   const overlay = document.getElementById("listing-overlay");
   if (!overlay) return;

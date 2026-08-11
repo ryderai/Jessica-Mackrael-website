@@ -1,10 +1,9 @@
 // ============================================================
 // My Properties — shows every listing represented by Jessica's
 // group. Pulls from the exact same data source as the Search
-// page (demo listings now, live IDX/MLS feed later), filtered
-// to her office — so when the API is connected, this page fills
-// itself with her real listings automatically. Nothing extra
-// to grab from her.
+// page (live IDX/MLS feed via /api/listings, demo fallback),
+// filtered to her office — so it fills itself with her real
+// listings automatically.
 // ============================================================
 
 function fmtPrice(n) {
@@ -14,6 +13,7 @@ function fmtPrice(n) {
 function propertyCard(l) {
   const photoStyle = l.photo ? ` style="background-image:url('${l.photo}');background-size:cover;background-position:center;"` : "";
   const tag = l.tag ? `<span class="listing-tag">${l.tag}</span>` : "";
+  const office = l.office ? `<p class="listing-office" style="font-size:12px;opacity:.6;margin-top:6px;">Listed by ${l.office}</p>` : "";
   return `
   <a class="card reveal" href="#listing-${l.id}"
      style="opacity:1;transform:none;display:block;text-decoration:none;color:inherit;">
@@ -21,6 +21,7 @@ function propertyCard(l) {
     <div class="price">${fmtPrice(l.price)}</div>
     <h3>${l.address} · ${l.city}</h3>
     <div class="meta"><span>${l.beds} beds</span><span>${l.baths} baths</span><span>${Number(l.sqft).toLocaleString()} sq ft</span></div>
+    ${office}
     <span class="card-link">View Details →</span>
   </a>`;
 }
@@ -47,6 +48,17 @@ async function initProperties() {
     .sort((a, b) => b.price - a.price)
     .map(propertyCard)
     .join("");
+
+  // IDX data-source disclaimer (required).
+  let disc = document.getElementById("idx-disclaimer");
+  if (!disc) {
+    disc = document.createElement("p");
+    disc.id = "idx-disclaimer";
+    disc.style.cssText = "grid-column:1/-1;font-size:11.5px;line-height:1.5;opacity:.55;margin-top:22px;text-align:center;";
+    grid.after(disc);
+  }
+  disc.textContent =
+    "Listing data courtesy of Emerald Coast MLS. Information is deemed reliable but not guaranteed.";
 }
 
 document.addEventListener("DOMContentLoaded", initProperties);

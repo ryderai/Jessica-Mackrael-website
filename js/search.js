@@ -1,17 +1,18 @@
 // ============================================================
 // Jessica Mackrael — Property Search
 // Demo mode uses SAMPLE_LISTINGS (js/listings-data.js).
-// To go live: set LISTINGS_CONFIG.mode = "api" and fill in the
-// IDX provider credentials (e.g. SimplyRETS / Repliers).
+// LIVE mode pulls from our own serverless proxy at /api/listings,
+// which holds the Spark/ECMLS token server-side (never in the
+// browser) and returns listings already in this site's shape.
 // ============================================================
 
 const LISTINGS_CONFIG = {
-  mode: "demo", // "demo" | "api"
+  mode: "api", // "demo" | "api"
   api: {
-    // Example for SimplyRETS-style REST API:
-    baseUrl: "https://api.simplyrets.com/properties",
-    username: "",   // <- provided by IDX vendor
-    password: "",   // <- provided by IDX vendor
+    // Our own serverless proxy. No credentials here on purpose —
+    // the Spark access token lives in a Vercel environment variable
+    // (SPARK_ACCESS_TOKEN), read only on the server in api/listings.js.
+    endpoint: "/api/listings",
   },
   // Used by the My Properties page: any listing whose office/agent
   // name contains this word counts as "Jessica's group".
@@ -21,30 +22,18 @@ const LISTINGS_CONFIG = {
 // --- fetch listings (demo or live) ---
 async function loadListings() {
   if (LISTINGS_CONFIG.mode === "demo") return SAMPLE_LISTINGS;
-  const { baseUrl, username, password } = LISTINGS_CONFIG.api;
-  const res = await fetch(`${baseUrl}?limit=50&status=Active`, {
-    headers: { Authorization: "Basic " + btoa(username + ":" + password) },
-  });
-  const data = await res.json();
-  // Adapter: map RESO/SimplyRETS fields into our card format
-  return data.map((p, i) => ({
-    id: p.mlsId || "API" + i,
-    price: p.listPrice,
-    address: p.address && p.address.full,
-    city: p.address && p.address.city,
-    zip: p.address && p.address.postalCode,
-    beds: p.property && p.property.bedrooms,
-    baths: p.property && p.property.bathsFull,
-    sqft: p.property && p.property.area,
-    lat: p.geo && p.geo.lat,
-    lng: p.geo && p.geo.lng,
-    status: p.mls && p.mls.status,
-    office: [(p.office && p.office.name) || "", (p.agent && p.agent.firstName) || "", (p.agent && p.agent.lastName) || ""].join(" ").trim(),
-    tag: "",
-    photo: p.photos && p.photos[0],
-    ph: "ph-" + ((i % 6) + 1),
-    blurb: p.remarks ? p.remarks.slice(0, 110) + "…" : "",
-  }));
+  try {
+    const res = await fetch(LISTINGS_CONFIG.api.endpoint, { headers: { Accept: "application/json" } });
+    if (!res.ok) throw new Error("feed " + res.status);
+    const data = await res.json();
+    const rows = data.listings || [];
+    // If the feed is momentarily empty, fall back to samples so the
+    // page never looks broken.
+    return rows.length ? rows : (typeof SAMPLE_LISTINGS !== "undefined" ? SAMPLE_LISTINGS : []);
+  } catch (e) {
+    console.warn("[listings] live feed unavailable, using samples:", e.message);
+    return (typeof SAMPLE_LISTINGS !== "undefined" ? SAMPLE_LISTINGS : []);
+  }
 }
 
 // --- state ---
@@ -117,27 +106,43 @@ function render(list) {
         <p class="listing-city">${l.city}, FL ${l.zip}</p>
         <div class="meta"><span>${l.beds} beds</span><span>${l.baths} baths</span><span>${Number(l.sqft).toLocaleString()} sq ft</span></div>
         <p>${l.blurb || ""}</p>
+        ${l.office ? `<p class="listing-office">Listed by ${l.office}</p>` : ""}
         <span class="card-link">View Details →</span>
       </div>`;
     card.addEventListener("mouseenter", () => highlightMarker(l.id, true));
     card.addEventListener("mouseleave", () => highlightMarker(l.id, false));
     grid.appendChild(card);
 
-    // marker (price pill)
-    const icon = L.divIcon({
-      className: "",
-      html: `<div class="price-pin" id="pin-${l.id}">${"$" + Math.round(l.price / 1000) + "k"}</div>`,
-      iconSize: null,
-    });
-    const m = L.marker([l.lat, l.lng], { icon }).addTo(markerLayer);
-    m.on("click", () => {
-      document.querySelector("#card-" + l.id).scrollIntoView({ behavior: "smooth", block: "center" });
-      flashCard(l.id);
-    });
-    markers[l.id] = m;
+    // marker (price pill) — only if the listing has coordinates
+    if (l.lat != null && l.lng != null) {
+      const icon = L.divIcon({
+        className: "",
+        html: `<div class="price-pin" id="pin-${l.id}">${"$" + Math.round(l.price / 1000) + "k"}</div>`,
+        iconSize: null,
+      });
+      const m = L.marker([l.lat, l.lng], { icon }).addTo(markerLayer);
+      m.on("click", () => {
+        document.querySelector("#card-" + l.id).scrollIntoView({ behavior: "smooth", block: "center" });
+        flashCard(l.id);
+      });
+      markers[l.id] = m;
+    }
   });
 
-  if (list.length) {
+  // IDX data-source disclaimer (required); rendered once under the grid.
+  let disc = document.querySelector("#idx-disclaimer");
+  if (!disc) {
+    disc = document.createElement("p");
+    disc.id = "idx-disclaimer";
+    disc.style.cssText = "grid-column:1/-1;font-size:11.5px;line-height:1.5;opacity:.55;margin-top:22px;";
+    grid.after(disc);
+  }
+  disc.textContent =
+    "Listing data courtesy of Emerald Coast MLS. Information is deemed reliable but not guaranteed. " +
+    "Listings held by brokerages other than Coldwell Banker Realty are marked with the listing firm's name.";
+
+  const layer = markerLayer.getLayers ? markerLayer.getLayers() : [];
+  if (layer.length) {
     map.fitBounds(markerLayer.getBounds().pad(0.18));
   }
 }

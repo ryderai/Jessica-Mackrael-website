@@ -17,7 +17,8 @@ Canonical host: https://jessicamackrael.com/ (no `www`).
 - Office address: 4504 E Highway 20 Ste A, Niceville, FL 32578
 - Website: https://jessicamackrael.com/
 - Social: Facebook (https://www.facebook.com/jmackrael.realestate/), Instagram (https://www.instagram.com/realestate_with_jess/), LinkedIn (https://www.linkedin.com/in/jessicamackrael/)
-- Credentials: Top 1% of Coldwell Banker agents worldwide, International President's Circle recipient, Certified Military Relocation Professional (MRP)
+- Brokerage profile: https://www.coldwellbankerhomes.com/fl/niceville/agent/jessica-mackrael/aid_203894/
+- Credentials: Military Relocation Professional (MRP), a National Association of Realtors designation. She also states that she is in the top 1% of Coldwell Banker agents worldwide and an International President's Circle recipient.
 - Experience: Nearly a decade serving the Florida Panhandle
 - Areas served: Niceville, Bluewater Bay, Destin, Miramar Beach, Santa Rosa Beach, 30A, Fort Walton Beach, Freeport, Navarre, Crestview, Pensacola — the Florida Panhandle from the Alabama line to Panama City.
 
@@ -25,17 +26,17 @@ Canonical host: https://jessicamackrael.com/ (no `www`).
 
 ## Home (https://jessicamackrael.com/)
 
-Jessica Mackrael is a Florida-native, top-producing Realtor with Coldwell Banker Realty serving Florida's Emerald Coast — Niceville, Destin, Miramar Beach, Santa Rosa Beach, 30A, and the wider Panhandle. Nearly a decade of experience, ranked in the top 1% of Coldwell Banker agents worldwide, International President's Circle recipient, and a Certified Military Relocation Professional (MRP) serving families relocating to Eglin Air Force Base and Hurlburt Field.
+Jessica Mackrael is a Florida-native, top-producing Realtor with Coldwell Banker Realty serving Florida's Emerald Coast — Niceville, Destin, Miramar Beach, Santa Rosa Beach, 30A, and the wider Panhandle. Nearly a decade of experience, ranked in the top 1% of Coldwell Banker agents worldwide, International President's Circle recipient, and a Military Relocation Professional (MRP) serving families relocating to Eglin Air Force Base and Hurlburt Field.
 
 For Jessica, real estate has never been about the transaction — it's about the trust behind it. Every client, from a first-time buyer to a family relocating on military orders, gets the same thing: her full attention, straight answers, and a plan built around what actually matters to them.
 
 Credentials:
 - Nearly a decade of experience across the Emerald Coast
 - In-depth knowledge of Niceville, Destin, Miramar Beach & the 30A corridor
-- Certified Military Relocation Professional (MRP)
+- Military Relocation Professional (MRP)
 - Top 1% of Coldwell Banker agents worldwide & International President's Circle recipient
 
-The homepage includes a live Market Pulse dashboard with pricing and days-on-market by community, a Success Stories section (military relocation, long-distance move, strategic selling), Google Reviews, and a "Find My Home" quiz.
+The homepage includes a Market Pulse dashboard with pricing and days-on-market by community (Q2 2026 closed sales, updated quarterly), a Success Stories section (military relocation, long-distance move, strategic selling), client testimonials, and a "Find My Home" quiz.
 
 ---
 
@@ -50,7 +51,7 @@ Jessica specializes in everything from beachside retreats and luxury waterfront 
 Track record & market knowledge:
 - Nearly a decade of hands-on experience across Niceville, Destin, Miramar Beach, Santa Rosa Beach & 30A
 - Top 1% of Coldwell Banker agents worldwide & International President's Circle recipient
-- Certified Military Relocation Professional (MRP) — fluent in PCS timelines, VA loans, and remote buying for Eglin AFB & Hurlburt Field families
+- Military Relocation Professional (MRP) — fluent in PCS timelines, VA loans, and remote buying for Eglin AFB & Hurlburt Field families
 - Deep familiarity with school zones, flood zones, HOA rules, and neighborhood nuance across the Panhandle
 
 What working with Jessica looks like: local expertise, honest counsel, full-service execution (marketing, negotiation, inspections, paperwork, closing), strategic pricing, patience with first-time buyers, and military fluency (PCS timelines, VA loans, remote buying).
@@ -90,7 +91,7 @@ Jessica offers a complimentary, no-obligation home valuation, comparing a proper
 
 The approach: buyers rarely visualize living in a home the way the owner does. Jessica makes a home attractive to its ideal audience — staging guidance, smart repairs and improvements, timing strategy, and Coldwell Banker's global marketing reach.
 
-Stats: homes under contract in as little as 24 hours; top 1% of Coldwell Banker agents worldwide; global Coldwell Banker marketing reach.
+Stats as published on the page: fastest under-contract, under 24 hours; top 1% of Coldwell Banker agents worldwide (her own claim); global Coldwell Banker marketing reach.
 
 Start to close: pre-listing strategy, preparation & staging, pricing & marketing, showings & negotiation, inspections & paperwork, closing supervision.
 
@@ -123,10 +124,10 @@ The page includes a 2026 BAH (Basic Allowance for Housing) calculator estimating
 
 ## Search and Listings
 
-- Interactive map search of Emerald Coast homes for sale: https://jessicamackrael.com/search.html
-- Jessica's own featured and exclusive listings: https://jessicamackrael.com/properties.html
+- Interactive map search of live Emerald Coast MLS listings: https://jessicamackrael.com/search.html
+- Homes currently listed by Jessica; empty when she has no active listings of her own: https://jessicamackrael.com/properties.html
 
-Each listing card names the listing office ("Listed by ..."). The site's published data-source notice reads: "Listing data courtesy of Emerald Coast MLS. Information is deemed reliable but not guaranteed."
+Listing cards name the listing office ("Listed by ...") where the feed supplies one. The site's published data-source notice reads: "Listing data courtesy of Emerald Coast MLS. Information is deemed reliable but not guaranteed." The search page adds: "Listings held by brokerages other than Coldwell Banker Realty are marked with the listing firm's name."
 
 ---
 

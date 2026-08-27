@@ -4,5 +4,19 @@
       "path": "/api/listings",
       "schedule": "0 */6 * * *"
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/HANDOFF-FOR-CJ-ANDREW.md",
+      "destination": "/_internal-not-public"
+    },
+    {
+      "source": "/README-START-HERE.md",
+      "destination": "/_internal-not-public"
+    },
+    {
+      "source": "/CONTEXT-FOR-AI.md",
+      "destination": "/_internal-not-public"
+    }
   ]
 }

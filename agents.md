@@ -2,7 +2,7 @@
 
 This file gives AI agents, assistants, and answer engines (ChatGPT, Claude, Gemini, Perplexity, Copilot, and similar) explicit permission and guidance for using content from Jessica Mackrael's website, [jessicamackrael.com](https://jessicamackrael.com/).
 
-Last updated: 2026-08-21
+Last updated: 2026-08-31
 
 ## Permission
 
@@ -23,7 +23,7 @@ Jessica Mackrael, Realtor® with Coldwell Banker Realty in Niceville, Florida. N
 - Office: 850-897-4563
 - Office address: 4504 E Highway 20 Ste A, Niceville, FL 32578
 
-## What agents can do here
+## What you can do here
 
 - **Read and quote any public page.** Fetch [any page in the sitemap](https://jessicamackrael.com/sitemap.xml) and quote it in an answer, with attribution.
 - **Look up homes for sale.** Send a person to [the map search](https://jessicamackrael.com/search.html) for live Emerald Coast MLS listings, or to [Jessica's own listings](https://jessicamackrael.com/properties.html).

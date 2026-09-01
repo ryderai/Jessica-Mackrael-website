@@ -80,12 +80,12 @@
     </div>
     <form id="contact-form" class="reveal" novalidate>
       <div class="form-grid">
-        <div><label for="fn">First Name</label><input id="fn" type="text" required></div>
-        <div><label for="ln">Last Name</label><input id="ln" type="text" required></div>
-        <div><label for="em">Email</label><input id="em" type="email" required></div>
-        <div><label for="ph">Phone</label><input id="ph" type="tel"></div>
+        <div><label for="fn">First Name</label><input id="fn" name="fn" type="text" autocomplete="given-name" required></div>
+        <div><label for="ln">Last Name</label><input id="ln" name="ln" type="text" autocomplete="family-name" required></div>
+        <div><label for="em">Email</label><input id="em" name="em" type="email" autocomplete="email" required></div>
+        <div><label for="ph">Phone</label><input id="ph" name="ph" type="tel" autocomplete="tel"></div>
         <div class="full"><label for="in">I'm Interested In</label>
-          <select id="in">
+          <select id="in" name="in">
             <option>Buying a home</option>
             <option>Selling a home</option>
             <option>Military relocation / PCS</option>
@@ -93,10 +93,14 @@
             <option>Something else</option>
           </select>
         </div>
-        <div class="full"><label for="msg">Message</label><textarea id="msg"></textarea></div>
+        <div class="full"><label for="msg">Message</label><textarea id="msg" name="msg"></textarea></div>
+      </div>
+      <div aria-hidden="true" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden">
+        <label for="website">Leave this field empty</label>
+        <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
       </div>
       <div class="btn-row"><button class="btn btn-solid" type="submit">Send Message</button></div>
-      <p id="form-note" style="display:none; margin-top:20px; color:#b3985f;"></p>
+      <p id="form-note" role="status" aria-live="polite" style="display:none; margin-top:20px; color:#b3985f;"></p>
     </form>
   </div>
 </section>

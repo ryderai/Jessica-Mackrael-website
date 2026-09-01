@@ -38,7 +38,9 @@
                       variable is the whole change if that is revisited.
 
    Debug without guessing: GET /api/lead?diag=1 — sends no email and
-   names the fault in plain English.
+   names the fault in plain English. NOTE: with a "Sending access" key it
+   cannot read the domain list, and says so rather than crying wolf. The
+   only conclusive test is a real submission arriving.
    ============================================================ */
 
 const RESEND_URL   = "https://api.resend.com/emails";
@@ -104,8 +106,24 @@ async function diag(res) {
     out.resendStatus = r.status;
     const body = await r.json().catch(() => ({}));
 
+    /* 401/403 here does NOT mean the key is bad.
+       Resend keys come in two permissions: "Full access" and "Sending access".
+       A Sending-access key can POST /emails but is REFUSED on GET /domains — which
+       is this endpoint's only probe. The house handler was written against a
+       Full-access key, so it reported that refusal as "Resend rejected the key",
+       which would send someone hunting a key that is in fact correct and working.
+       Sending access is the RIGHT permission for a lead form (least privilege), so
+       this is the expected answer, not a fault. Copy this back to the other sites. */
     if (r.status === 401 || r.status === 403) {
-      out.verdict = "Resend rejected the key. It is wrong, revoked, or was rotated without updating Vercel.";
+      out.likelySendOnlyKey = true;
+      out.verdict =
+        "The key is set but cannot list domains. That is EXPECTED and FINE if it is a " +
+        "\"Sending access\" key — that permission can send email but may not read domains, " +
+        "and sending access is the right level for a lead form. This endpoint therefore " +
+        "cannot confirm the sending domain from here. It is only a real fault if the key " +
+        "is meant to have Full access, in which case it is wrong, revoked, or was rotated " +
+        "without updating Vercel. The definitive test either way is an actual form " +
+        "submission: if that arrives, the key is correct.";
       return res.status(200).json(out);
     }
 

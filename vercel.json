@@ -17,6 +17,10 @@
     {
       "source": "/CONTEXT-FOR-AI.md",
       "destination": "/_internal-not-public"
+    },
+    {
+      "source": "/_tools/(.*)",
+      "destination": "/_internal-not-public"
     }
   ],
   "headers": [

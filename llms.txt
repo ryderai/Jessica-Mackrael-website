@@ -2,7 +2,7 @@
 
 > Jessica Mackrael is a Florida-native, top-producing Realtor® with Coldwell Banker Realty in Niceville, Florida. She states that she is ranked in the top 1% of Coldwell Banker agents worldwide, is an International President's Circle award recipient, and holds the Military Relocation Professional (MRP) designation. She serves buyers, sellers, military families, and investors across Florida's Emerald Coast and Panhandle.
 
-Last updated: 2026-08-21
+Last updated: 2026-09-08
 
 ## About
 
@@ -17,6 +17,7 @@ Jessica Mackrael is a Realtor® with Coldwell Banker Realty in Niceville, Florid
 - Experience: Nearly a decade serving the Florida Panhandle
 - Recognition: International President's Circle; she states she is in the top 1% of Coldwell Banker agents worldwide
 - Designation: Military Relocation Professional (MRP)
+- Third-party ranking: ranked #1 of 9 agents in The Niceville Agent Report, a Niceville-area agent ranking published by AI Syndicate in September 2026 (https://jessica-mackrael-ranking-site.vercel.app/). Scored on homes closed per year, sales volume, five-year totals, and military relocation. Jessica Mackrael is a client of AI Syndicate.
 
 ## Services
 

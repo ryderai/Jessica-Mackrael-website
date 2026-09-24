@@ -19,42 +19,44 @@ const REVIEWS_API_PROXY_URL = '';         // ← fill in when available
 const MIN_RATING            = 4;          // Only show 4+ star reviews
 
 // Curated reviews — drawn from verified client testimonials.
+// 2026-09-24: the fixed '2 months ago'-style dates were removed. They were typed in July and never
+// changed, so they were wrong on the live page. Confirm with Jessica that each quote is a real client's.
 // Replace with live API data by wiring up the proxy above.
 const CURATED_REVIEWS = [
   {
     author_name: 'The Whitman Family',
     rating: 5,
-    relative_time_description: '2 months ago',
+    relative_time_description: '',
     text: 'We knew instantly that she was the one for us. She\'s honest and hands-on, and she really helped to take the pressure off of us. We couldn\'t have navigated our first home purchase without her.',
   },
   {
     author_name: 'Mike F.',
     rating: 5,
-    relative_time_description: '4 months ago',
+    relative_time_description: '',
     text: 'Jessica was the best realtor I could have asked for. She made my experience fun, easy, stress-free, and very informative. I\'ll recommend her to anyone moving to the Emerald Coast.',
   },
   {
     author_name: 'The Calhoun Family',
     rating: 5,
-    relative_time_description: '5 months ago',
+    relative_time_description: '',
     text: 'We were buying and selling all at once and Jessica was wonderful at putting our minds at ease. Negotiations went smoothly and we absolutely love our new home. Truly a five-star experience.',
   },
   {
     author_name: 'Matt K.',
     rating: 5,
-    relative_time_description: '6 months ago',
+    relative_time_description: '',
     text: 'She walked me through every step from contract to closing. I could not have asked for a better first home buying experience — patient, knowledgeable, and always responsive.',
   },
   {
     author_name: 'Sarah & Derek T.',
     rating: 5,
-    relative_time_description: '7 months ago',
+    relative_time_description: '',
     text: 'PCS move from Virginia to Niceville and Jessica handled everything remotely before we ever set foot in Florida. Our VA loan closed without a hitch. She is the real deal for military families.',
   },
   {
     author_name: 'Brenda L.',
     rating: 5,
-    relative_time_description: '9 months ago',
+    relative_time_description: '',
     text: 'Listed our Destin home on a Thursday. Under contract Saturday morning, above asking price. Jessica\'s marketing strategy and network are second to none. Could not be happier.',
   },
 ];

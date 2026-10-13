@@ -35,6 +35,15 @@ Popular With Military Families
 
 ### [NicevilleTen minutes to Eglin's east gate, A-rated schools, bayside living.Closest to Eglin](communities.html#niceville) ### [Fort Walton BeachBest value near Hurlburt Field, with beaches on your days off.Near Hurlburt](communities.html#fwb) ### [Crestview & NavarreMore house for the BAH, with straightforward commutes.Space & Value](communities.html#more)
 
+Area Guides
+
+## Drive times, prices and schools, town by town.
+
+- [Living Near Eglin AFB](https://jessicamackrael.com/eglin-afb.html): Which town is closest to which gate, with drive times checked on Google Maps.
+- [Living Near Hurlburt Field](https://jessicamackrael.com/hurlburt-field.html): Mary Esther, Fort Walton Beach, Wright and Navarre compared.
+- [Crestview Guide](https://jessicamackrael.com/crestview.html): Drive times, recent prices and schools in Okaloosa County's largest city.
+- [Niceville vs. Crestview](https://jessicamackrael.com/niceville-vs-crestview.html): The two towns side by side, with a clear pick for each buyer.
+
 Military Housing Tool
 
 ## What can your BAH buy?
@@ -85,6 +94,10 @@ International President's Circle · MRP
 #### Resources
 
   * [Military Relocation](military-relocation.html)
+  * [Living Near Eglin AFB](eglin-afb.html)
+  * [Living Near Hurlburt Field](hurlburt-field.html)
+  * [Crestview Guide](crestview.html)
+  * [Niceville vs. Crestview](niceville-vs-crestview.html)
   * [Find My Home Quiz](quiz.html)
   * [Market Updates](market-updates.html)
   * [Mortgage Calculator](mortgage.html)

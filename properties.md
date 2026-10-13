@@ -44,6 +44,10 @@ International President's Circle · MRP
 #### Resources
 
   * [Military Relocation](military-relocation.html)
+  * [Living Near Eglin AFB](eglin-afb.html)
+  * [Living Near Hurlburt Field](hurlburt-field.html)
+  * [Crestview Guide](crestview.html)
+  * [Niceville vs. Crestview](niceville-vs-crestview.html)
   * [Find My Home Quiz](quiz.html)
   * [Market Updates](market-updates.html)
   * [Mortgage Calculator](mortgage.html)

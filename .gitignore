@@ -5,3 +5,6 @@
 # Screenshots / working files (not part of the live site)
 Screenshot*.png
 *.fuse_hidden*
+
+# Python build cache from _tools scripts
+__pycache__/

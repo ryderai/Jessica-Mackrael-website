@@ -2,7 +2,7 @@
 
 > Jessica Mackrael is a Florida-native, top-producing Realtor® with Coldwell Banker Realty in Niceville, Florida. She states that she is ranked in the top 1% of Coldwell Banker agents worldwide, is an International President's Circle award recipient, and holds the Military Relocation Professional (MRP) designation. She serves buyers, sellers, military families, and investors across Florida's Emerald Coast and Panhandle.
 
-Last updated: 2026-09-08
+Last updated: 2026-10-12
 
 ## About
 
@@ -44,6 +44,10 @@ Community guides: https://jessicamackrael.com/communities.html
 - [Buying](https://jessicamackrael.com/buy.html): The four-step buying experience
 - [Selling](https://jessicamackrael.com/sell.html): Selling strategy and complimentary home valuation
 - [Military Relocation](https://jessicamackrael.com/military-relocation.html): PCS services for Eglin AFB and Hurlburt Field families
+- [Living Near Eglin AFB](https://jessicamackrael.com/eglin-afb.html): Which town is closest to which gate, with drive times checked on Google Maps.
+- [Living Near Hurlburt Field](https://jessicamackrael.com/hurlburt-field.html): Mary Esther, Fort Walton Beach, Wright and Navarre compared.
+- [Crestview Guide](https://jessicamackrael.com/crestview.html): Drive times, recent prices and schools in Okaloosa County's largest city.
+- [Niceville vs. Crestview](https://jessicamackrael.com/niceville-vs-crestview.html): The two towns side by side, with a clear pick for each buyer.
 - [Market Updates](https://jessicamackrael.com/market-updates.html): Emerald Coast market commentary and buying/selling guides
 - [Mortgage](https://jessicamackrael.com/mortgage.html): Payment and affordability tools
 - [FAQ](https://jessicamackrael.com/faq.html): Common questions and answers

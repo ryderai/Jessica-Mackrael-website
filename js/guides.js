@@ -46,7 +46,7 @@
     return '<article class="card">' +
       '<div class="card-photo ' + esc(l.ph || "ph-1") + '"' + photo + ' aria-hidden="true"></div>' +
       '<div class="price">' + fmt(l.price) + "</div>" +
-      "<h3>" + esc(l.address) + " · " + esc(l.city) + "</h3>" +
+      "<h3>" + esc(l.address) + (l.city && String(l.address).toLowerCase().indexOf(String(l.city).toLowerCase()) === -1 ? " · " + esc(l.city) : "") + "</h3>" +
       '<div class="meta">' + meta + "</div>" +
       (l.office ? '<p class="listing-office">Listed by ' + esc(l.office) + "</p>" : "") +
       '<a class="card-link" href="search.html#listing-' + encodeURIComponent(l.id) + '">View details<span class="sr-only"> for ' + esc(l.address) + "</span></a>" +

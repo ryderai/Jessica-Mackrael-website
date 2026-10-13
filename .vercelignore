@@ -4,3 +4,7 @@
 HANDOFF-FOR-CJ-ANDREW.md
 README-START-HERE.md
 CONTEXT-FOR-AI.md
+
+# Build scripts (added 2026-10-12). vercel.json rewrites do NOT hide files that exist,
+# so /_tools/build-guides.py was publicly downloadable until this line.
+_tools/
